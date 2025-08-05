@@ -8,8 +8,8 @@ st.title("📊 نمایش فایل CSV و نمودار ساده")
 uploaded_file = st.file_uploader("لطفاً فایل CSV خود را انتخاب کنید", type=["csv"])
 
 if uploaded_file is not None:
-    # خواندن فایل
-    df = pd.read_csv(uploaded_file)
+    df = pd.read_csv(uploaded_file, sep=';')  # اینجا sep=';' اضافه شد
+    st.dataframe(df)
 
     # نمایش جدول داده‌ها
     st.subheader("🔍 پیش‌نمایش داده‌ها")
@@ -30,3 +30,4 @@ if uploaded_file is not None:
         st.warning("هیچ ستونی با نوع عددی پیدا نشد.")
 else:
     st.info("👈 لطفاً یک فایل CSV آپلود کنید.")
+
